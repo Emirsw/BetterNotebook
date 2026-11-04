@@ -34,6 +34,8 @@ BetterNotebook, PDF okurken kaynakla ilgili soru sormayı, yanıtları kendi not
 
 ## Ekran görüntüleri
 
+![Devre PDF’sinde işaretlenen bölgeler ve adım adım açıklama paneli](docs/screenshots/pdf-annotations-workspace.png)
+
 | Çalışma alanı | PDF üzerinde adım adım açıklama |
 | --- | --- |
 | ![PDF, not ve AI araçları panelleri](docs/screenshots/workspace.png) | ![Örnek devre üzerinde açıklama ve formül](docs/screenshots/pdf-study.png) |

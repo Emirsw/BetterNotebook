@@ -36,6 +36,8 @@ BetterNotebook is a self-hosted study workspace. Select a circuit, formula, or d
 
 ## Screenshots
 
+![Annotated circuit PDF with the step-by-step explanation panel](docs/screenshots/pdf-annotations-workspace.png)
+
 ![BetterNotebook workspace with PDF, note editor, and AI tools](docs/screenshots/workspace.png)
 
 | PDF explanations | File library |
