@@ -1,4 +1,4 @@
-/* Buildless presentation. All demo interactions are local; no AI calls are made. */
+/* BetterNotebook landing page interactions. */
 (() => {
   'use strict';
   const languageKey = 'betternotebook-site-language';
@@ -39,53 +39,30 @@
   }
 
   document.querySelector('#year').textContent = new Date().getFullYear();
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const shell = document.querySelector('.product-shell');
-  const tabs = [...document.querySelectorAll('.demo-tabs [data-demo]')];
-  const addButton = document.querySelector('#add-answer');
-  const toast = document.querySelector('#toast');
-  let toastTimer;
-  let added = false;
-  const notify = (message) => {
-    clearTimeout(toastTimer);
-    toast.querySelector('span').textContent = translate(message);
-    toast.classList.add('visible');
-    toastTimer = setTimeout(() => toast.classList.remove('visible'), 3200);
-  };
-  const setScene = scene => {
-    if (!['read', 'ask', 'write'].includes(scene)) return;
-    shell.dataset.scene = scene;
-    tabs.forEach(tab => {
-      const selected = tab.dataset.demo === scene;
-      tab.classList.toggle('selected', selected);
-      tab.setAttribute('aria-pressed', String(selected));
-    });
-    if (scene === 'write') added = true;
-    addButton.querySelector('span').textContent = translate(added ? 'Notuna eklendi' : 'Notuma ekle');
-    addButton.querySelector('use').setAttribute('href', added ? '#i-check' : '#i-plus');
-    addButton.setAttribute('aria-label', translate(added ? 'Örnek yanıta not panelinde bak' : 'Örnek AI yanıtını notuma ekle'));
-  };
-  document.querySelectorAll('[data-demo]').forEach(button => button.addEventListener('click', () => setScene(button.dataset.demo)));
-  document.querySelectorAll('[data-demo-jump]').forEach(button => button.addEventListener('click', () => {
-    setScene(button.dataset.demoJump);
-    document.querySelector('#urun-demosu').scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
-  }));
-  addButton.addEventListener('click', () => {
-    setScene('write');
-    notify('Yanıt örnek notuna eklendi.');
-  });
-  document.querySelector('#demo-question').addEventListener('click', () => {
-    setScene('ask');
-    notify('Bu bir ürün önizlemesi. Gelişmeleri GitHub’dan takip edebilirsin.');
-  });
-  tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
-    let next;
-    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-    if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
-    if (event.key === 'Home') next = 0;
-    if (event.key === 'End') next = tabs.length - 1;
-    if (next !== undefined) { event.preventDefault(); tabs[next].focus(); setScene(tabs[next].dataset.demo); }
-  }));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const preview = document.querySelector('.workspace-preview');
+  let previewFrame = null;
+
+  function updatePreviewScale() {
+    previewFrame = null;
+    if (reducedMotion.matches) {
+      preview.style.removeProperty('--preview-scale');
+      return;
+    }
+    const top = preview.getBoundingClientRect().top;
+    const viewport = window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (viewport * 0.95 - top) / (viewport * 0.7)));
+    const eased = progress * progress * (3 - 2 * progress);
+    preview.style.setProperty('--preview-scale', (0.84 + 0.16 * eased).toFixed(4));
+  }
+
+  function schedulePreviewScale() {
+    if (previewFrame === null) previewFrame = requestAnimationFrame(updatePreviewScale);
+  }
+
+  window.addEventListener('scroll', schedulePreviewScale, {passive: true});
+  window.addEventListener('resize', schedulePreviewScale);
+  reducedMotion.addEventListener('change', schedulePreviewScale);
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#navigation');
   function closeMenu() { nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', translate('Menüyü aç')); }
@@ -103,10 +80,10 @@
     try { localStorage.setItem(languageKey, language); } catch { /* Switching still works in this tab. */ }
     applyLanguage();
     closeMenu();
-    setScene(shell.dataset.scene);
-    toast.classList.remove('visible');
+    schedulePreviewScale();
   });
   applyLanguage();
+  updatePreviewScale();
   const dialog = document.querySelector('#cloud-dialog');
   document.querySelector('#cloud-info').addEventListener('click', () => dialog.showModal());
   dialog.querySelectorAll('.dialog-close').forEach(button => button.addEventListener('click', () => dialog.close()));
@@ -115,7 +92,7 @@
     if (event.target === dialog && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dialog.close();
   });
   if ('IntersectionObserver' in window) {
-    if (!reducedMotion) {
+    if (!reducedMotion.matches) {
       document.body.classList.add('motion-ready');
       const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
         if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
