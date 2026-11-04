@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/PHP-8.1%2B-52586b?style=flat-square" alt="PHP 8.1 or later">
   <img src="https://img.shields.io/badge/database-MySQL%20%2F%20MariaDB-414650?style=flat-square" alt="MySQL or MariaDB">
   <img src="https://img.shields.io/badge/deployment-self--hosted-33363d?style=flat-square" alt="Deployment: Self-hosted">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--2.0--or--later-33363d?style=flat-square" alt="Lisans: GPL-2.0-or-later"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <strong>Türkçe</strong></p>
@@ -92,4 +93,6 @@ Apache, Nginx ve cPanel üzerinde kurulum, mevcut sürümü yükseltme ve çöp 
 
 ## Lisans
 
-Proje lisansı ilk kamuya açık sürümden önce belirlenecek. Dağıtılan üçüncü taraf bileşenlerinin lisans bildirimleri [app/assets/vendor](app/assets/vendor) dizininde yer alır.
+BetterNotebook, [GNU Genel Kamu Lisansı'nın 2. sürümü](LICENSE) veya isteğe bağlı olarak Free Software Foundation tarafından yayımlanan sonraki herhangi bir sürümü altında lisanslanır. SPDX tanımlayıcısı `GPL-2.0-or-later` şeklindedir.
+
+Birlikte dağıtılan üçüncü taraf bileşenleri kendi lisanslarını korur. Lisans bildirimleri [`app/assets/vendor/`](app/assets/vendor/) dizinindedir.
