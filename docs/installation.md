@@ -14,7 +14,7 @@ Kurulum ve yükseltme bağlantısına tablo oluşturma ve değiştirme yetkileri
 
 ### Apache
 
-`app/.htaccess` temiz adresleri yönlendirir ve özel dizinleri kapatır. Apache 2.4'te `mod_rewrite` etkin olmalı. Sanal sunucu ayarlarında bu kurallar için `AllowOverride Options FileInfo` izni ver. TLS sertifikasını sunucunda yapılandır.
+`app/.htaccess` temiz adresleri yönlendirir ve özel dizinleri kapatır. Apache 2.4'te `mod_rewrite` etkin olmalı. Sanal sunucu ayarlarında uygulama dizini için `AllowOverride Options FileInfo AuthConfig` izni ver. TLS sertifikasını sunucunda yapılandır.
 
 ### Nginx ve PHP-FPM
 
