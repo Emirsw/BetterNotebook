@@ -7,7 +7,7 @@ Bu depodaki `site/` klasörü mevcut statik tanıtım sayfasıdır. Cloudflare P
 1. Cloudflare panelinde **Workers & Pages** bölümüne git. Yeni bir **Pages** projesi oluştur ve GitHub deposunu bağla. Yetkiyi yalnızca BetterNotebook deposuyla sınırlandırabilirsin.
 2. Üretim dalı olarak `main` seç. Framework preset için **None** kullan. Build command alanını boş bırak. Build output directory olarak `site` gir ve kök dizini varsayılanda bırak.
 3. Deploy seçeneğiyle ilk yayını yap. Sonraki `main` güncellemeleri otomatik yayımlanır.
-4. Site düğmelerinin açtığı uygulama adresi değişirse `site/script.js` içindeki `APP_URL` değerini ve `site/index.html` içindeki uygulama bağlantılarını güncelle.
+4. Tanıtım sayfasının dış bağlantılarını değiştirmek için `site/index.html` içindeki GitHub adreslerini düzenle.
 
 Kaynaklar: [Cloudflare GitHub entegrasyonu](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/) · [Pages ücretsiz plan sınırları](https://developers.cloudflare.com/pages/platform/limits/).
 

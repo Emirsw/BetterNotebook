@@ -1,8 +1,6 @@
 /* Buildless presentation. All demo interactions are local; no AI calls are made. */
 (() => {
   'use strict';
-  const APP_URL = 'https://ai.mecebi.com.tr/';
-  document.querySelectorAll('.app-link').forEach(link => { link.href = APP_URL; });
   document.querySelector('#year').textContent = new Date().getFullYear();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const shell = document.querySelector('.product-shell');
@@ -41,7 +39,7 @@
   });
   document.querySelector('#demo-question').addEventListener('click', () => {
     setScene('ask');
-    notify('Bu bir ürün önizlemesi. Kendi sorun için uygulamayı aç.');
+    notify('Bu bir ürün önizlemesi. Gelişmeleri GitHub’dan takip edebilirsin.');
   });
   tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
     let next;
