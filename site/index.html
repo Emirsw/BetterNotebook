@@ -8,6 +8,7 @@
   <title>BetterNotebook — Anlamaya daha çok alan.</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="style.css">
+  <script src="translations.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -32,7 +33,7 @@
   <header class="header" id="header">
     <a class="brand" href="#" aria-label="BetterNotebook ana sayfa"><span>Better<span class="brand-light">Notebook</span></span></a>
     <nav class="nav glass" aria-label="Ana menü" id="navigation"><a href="#deneyim" class="active">Deneyim</a><a href="#ozellikler">Özellikler</a><a href="#sana-gore">Sana göre</a></nav>
-    <div class="header-actions"><a class="button button-small button-glass" href="https://github.com/Emirsw/BetterNotebook">GitHub <svg><use href="#i-up"/></svg></a><button class="menu-toggle icon-button" aria-label="Menüyü aç" aria-controls="navigation" aria-expanded="false"><svg><use href="#i-menu"/></svg></button></div>
+    <div class="header-actions"><a class="button button-small button-glass" href="https://github.com/Emirsw/BetterNotebook">GitHub <svg><use href="#i-up"/></svg></a><button class="button button-small button-glass language-toggle" type="button" id="language-toggle" hidden>EN</button><button class="menu-toggle icon-button" aria-label="Menüyü aç" aria-controls="navigation" aria-expanded="false"><svg><use href="#i-menu"/></svg></button></div>
   </header>
 
   <main id="main">
@@ -44,6 +45,11 @@
         <p>PDF’in, notların ve AI. Hepsi aynı çalışma alanında.<br class="desktop-br"> Kaynağınla konuş, adım adım öğren, kendi notunu oluştur.</p>
         <div class="hero-actions"><a class="button button-primary" href="https://github.com/Emirsw/BetterNotebook">GitHub’da takip et <svg><use href="#i-arrow"/></svg></a><a class="text-link" href="#urun-demosu">Nasıl çalıştığını keşfet <span>↓</span></a></div>
       </div>
+
+      <figure class="workspace-preview reveal">
+        <img src="assets/workspace-preview.png" width="2552" height="1297" alt="BetterNotebook’ta devre PDF’si, işaretli kaynak bölgeleri ve adım adım AI açıklamaları">
+        <figcaption>BetterNotebook çalışma alanı · PDF üzerinde adım adım açıklamalar</figcaption>
+      </figure>
 
       <div class="product-wrap reveal" id="urun-demosu">
         <div class="product-shell glass" data-scene="read">
@@ -72,7 +78,7 @@
             <section class="demo-panel ai-panel" aria-label="Örnek AI soru paneli"><div class="panel-label"><span><svg><use href="#i-spark"/></svg> AI soru paneli</span><span class="panel-minus">−</span></div><div class="chat-content"><span class="chat-date">BİRLİKTE ANLAYALIM</span><div class="user-message">Bu iki direnç neden paralel?</div><div class="assistant-message"><span class="assistant-avatar"><svg><use href="#i-spark"/></svg></span><p>Çünkü <strong>aynı iki düğümün</strong> arasına bağlılar. Bu nedenle üzerlerindeki gerilim aynı.</p><div class="mini-source"><svg><use href="#i-crop"/></svg><span>Seçtiğin alan · Sayfa 6</span></div><p>6 Ω ve 3 Ω için:</p><div class="chat-equation">1 / R<sub>p</sub> = 1 / 6 + 1 / 3<br><strong>R<sub>p</sub> = 2 Ω</strong></div><button class="add-answer" id="add-answer"><svg><use href="#i-plus"/></svg><span>Notuma ekle</span></button></div></div><div class="demo-composer"><span><svg><use href="#i-file"/></svg> devre-analizi.pdf</span><button id="demo-question">Birlikte çözelim… <span><svg><use href="#i-send"/></svg></span></button></div></section>
           </div>
         </div>
-        <div class="demo-controls"><span class="demo-caption"><div class="demo-tabs" role="group" aria-label="Ürün demosu"><button class="selected" data-demo="read" aria-pressed="true">01 <span>Kaynağı oku</span></button><button data-demo="ask" aria-pressed="false">02 <span>AI’a sor</span></button><button data-demo="write" aria-pressed="false">03 <span>Notuna ekle</span></button></div></div>
+        <div class="demo-controls"><div class="demo-tabs" role="group" aria-label="Ürün demosu"><button class="selected" data-demo="read" aria-pressed="true">01 <span>Kaynağı oku</span></button><button data-demo="ask" aria-pressed="false">02 <span>AI’a sor</span></button><button data-demo="write" aria-pressed="false">03 <span>Notuna ekle</span></button></div></div>
       </div>
     </section>
 

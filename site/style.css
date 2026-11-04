@@ -30,3 +30,18 @@ h2{font-size:clamp(36px,4.1vw,56px);font-weight:530;line-height:1.14;letter-spac
   .pdf-paper{height:390px}
   .circuit{height:149px}
 }
+
+/* Product screenshot and language selector */
+.language-toggle[hidden]{display:none}
+.language-toggle{min-width:38px;gap:0;padding-inline:10px}
+.workspace-preview{width:calc(100% - 70px);max-width:1210px;margin:64px auto 0;text-align:center}
+.workspace-preview img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:18px;background:#101012;box-shadow:0 24px 65px -28px #0009}
+.workspace-preview figcaption{margin-top:14px;color:var(--muted);font-size:12px;line-height:1.5}
+.demo-controls{justify-content:center}
+@media(max-width:800px){.workspace-preview{width:calc(100% - 44px);margin-top:46px}}
+@media(max-width:540px){
+  .workspace-preview{width:calc(100% - 26px);margin-top:32px}
+  .workspace-preview img{border-radius:14px}
+  .workspace-preview figcaption{font-size:10px}
+  .header-actions>.language-toggle{min-width:32px;padding-inline:7px}
+}
