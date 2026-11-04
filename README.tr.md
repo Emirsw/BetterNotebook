@@ -47,6 +47,8 @@ BetterNotebook, PDF okurken kaynakla ilgili soru sormayı, yanıtları kendi not
 
 </details>
 
+![Dil ve Gemini bağlantısı seçeneklerini gösteren Ayarlar ekranı](docs/screenshots/settings.png)
+
 Görüntüler örnek çalışma verileriyle çekilmiştir.
 
 ## Hızlı kurulum

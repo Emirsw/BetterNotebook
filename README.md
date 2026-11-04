@@ -44,6 +44,8 @@ BetterNotebook is a self-hosted study workspace. Select a circuit, formula, or d
 | --- | --- |
 | ![Step-by-step explanation on a sample circuit](docs/screenshots/pdf-study.png) | ![File library and linked notes](docs/screenshots/library.png) |
 
+![Settings with language and Gemini connection options](docs/screenshots/settings.png)
+
 Screenshots use sample study material.
 
 ## Quick start
