@@ -10,7 +10,7 @@ BetterNotebook için PHP 8.1+, MariaDB veya MySQL, PDO MySQL, mbstring, cURL, Op
 4. HTTPS üzerinden `/setup.php` sayfasını aç. **Kurulum kodu** alanına `BETTERNOTEBOOK_SETUP_TOKEN` değerini gir ve ilk hesabını oluştur. Giriş ekranına yönlendirildikten sonra yalnızca kurulum kodunu yapılandırmadan kaldır.
 5. Giriş yap. İstersen Ayarlar bölümünden Gemini bağlantını yapılandır.
 
-Kurulum ve yükseltme bağlantısına tablo oluşturma ve değiştirme yetkileri gerekir. Yerel geliştirme için PHP'nin yerleşik sunucusunu [README'deki komutla](../README.md#hızlı-kurulum) kullan.
+Kurulum ve yükseltme bağlantısına tablo oluşturma ve değiştirme yetkileri gerekir. Yerel geliştirme için PHP'nin yerleşik sunucusunu [README'deki komutla](../README.tr.md#hızlı-kurulum) kullan.
 
 ### Kurulum kodu nereden gelir?
 

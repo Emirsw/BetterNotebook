@@ -1,85 +1,95 @@
 <p align="center">
-  <img src="docs/brand/logo.svg" alt="BetterNotebook" width="420">
+  <img src="docs/brand/logo.svg" alt="BetterNotebook" width="360">
 </p>
 
 <h1 align="center">BetterNotebook</h1>
 
-<p align="center"><strong>PDF, notlar ve yapay zekâ tek çalışma alanında.</strong></p>
+<p align="center"><strong>Read PDFs, take notes, and ask AI in one workspace.</strong></p>
 
 <p align="center">
-  <a href="#ekran-görüntüleri">Ekran görüntüleri</a> ·
-  <a href="#hızlı-kurulum">Kurulum</a> ·
-  <a href="docs/installation.md">Sunucu kurulumu ve yükseltme</a> ·
-  <a href="docs/cloudflare-pages.md">Tanıtım sitesi</a>
+  <img src="https://img.shields.io/badge/status-preview-33363d?style=flat-square" alt="Status: Preview">
+  <img src="https://img.shields.io/badge/PHP-8.1%2B-52586b?style=flat-square" alt="PHP 8.1 or later">
+  <img src="https://img.shields.io/badge/database-MySQL%20%2F%20MariaDB-414650?style=flat-square" alt="MySQL or MariaDB">
+  <img src="https://img.shields.io/badge/deployment-self--hosted-33363d?style=flat-square" alt="Deployment: Self-hosted">
 </p>
 
-BetterNotebook, PDF okurken kaynakla ilgili soru sormayı, yanıtları kendi notlarına eklemeyi ve öğrendiklerini düzenlemeyi kolaylaştırır. Bir devreyi veya formülü PDF üzerinde seçebilir, adım adım açıklamayı takip edebilir ve notuna dönebilirsin.
+<p align="center"><strong>English</strong> · <a href="README.tr.md">Türkçe</a></p>
 
-## Neler yapabilirsin?
+<p align="center">
+  <a href="https://betternotebook.mecebi.com.tr/">Website</a> ·
+  <a href="#screenshots">Screenshots</a> ·
+  <a href="#quick-start">Quick start</a> ·
+  <a href="#server-installation">Server installation</a>
+</p>
 
-- **Kaynağı, notu ve AI sohbetini birlikte aç.** Panellerin sırasını ve genişliğini değiştir.
-- **PDF üzerinde çalış.** Belgeyi sayfa aralıklarına böl, seçili bir alanı AI'a sor ve kaynak üzerinde üretilen açıklamaları incele.
-- **Kendi notunu oluştur.** Dosyasız başlayabilir, matematiksel ifadeler ve vurgular ekleyebilir, AI yanıtlarını notuna aktarabilirsin.
-- **Dosyalarını ve derslerini düzenle.** Kaynakları farklı notlarda kullan, çalışma oturumlarını ders bazında takip et. Not, dosya ve dersleri çöp kutusundan 30 gün içinde geri yükle.
+BetterNotebook is a self-hosted study workspace. Select a circuit, formula, or diagram in a PDF, follow a step-by-step explanation alongside the source, and add useful answers to your own notes.
 
-## Ekran görüntüleri
+## Features
 
-| Çalışma alanı | PDF üzerinde adım adım açıklama |
+| Feature | What you can do |
 | --- | --- |
-| ![PDF, not ve AI araçları panelleri](docs/screenshots/workspace.png) | ![Örnek devre üzerinde açıklama ve formül](docs/screenshots/pdf-study.png) |
+| Three-panel workspace | Read a PDF, edit a note, and chat with AI side by side. Resize and reorder the panels. |
+| PDF tools | Split a document by page range, ask about a selected area, and review page annotations. |
+| Rich notes | Start with a blank note, highlight text, write equations, and insert AI answers. |
+| Library and study sessions | Reuse files across notes and track focus sessions by course. |
+| Trash | Restore notes, files, and courses within 30 days, or empty the trash manually. |
 
-<details>
-<summary>Dosya kütüphanesi</summary>
+## Screenshots
 
-![Dosya kütüphanesi ve not bağlantıları](docs/screenshots/library.png)
+![BetterNotebook workspace with PDF, note editor, and AI tools](docs/screenshots/workspace.png)
 
-</details>
+| PDF explanations | File library |
+| --- | --- |
+| ![Step-by-step explanation on a sample circuit](docs/screenshots/pdf-study.png) | ![File library and linked notes](docs/screenshots/library.png) |
 
-Görüntüler örnek çalışma verileriyle çekilmiştir.
+Screenshots use sample study material.
 
-## Hızlı kurulum
+## Quick start
 
-Gereksinimler: PHP 8.1 veya üstü, MariaDB veya MySQL, `pdo_mysql`, `mbstring`, `curl`, `openssl` ve `fileinfo`. Kurulumda kullanılacak boş bir veritabanı ve o veritabanına yetkili bir kullanıcı oluştur.
+**Requirements**: PHP 8.1 or later, MySQL or MariaDB, and the `pdo_mysql`, `mbstring`, `curl`, `openssl`, and `fileinfo` PHP extensions.
 
-1. Depoyu yereline al ve `app/config/database.example.php` dosyasını aynı dizinde `database.custom.php` olarak kopyala. Veritabanı bilgilerini özel dosyaya yaz.
-2. **Kurulum kodunu kendin üret.** Depo kökünde aşağıdaki iki satırı çalıştır. Her komut 64 karakterlik farklı bir değer üretir.
+1. Clone the repository. Create an empty database and a database user with permissions on it. Copy `app/config/database.example.php` to `app/config/database.custom.php` and fill in your database settings.
+2. From the repository root, run the command twice. Each run generates a distinct 64-character value.
 
    ```sh
    php app/scripts/database.php secret
    php app/scripts/database.php secret
    ```
 
-   `app/config/database.custom.php` içindeki boş değerleri doldur. Aşağıdaki örnek yer tutucuları terminalden aldığın çıktılarla değiştir.
+   Replace the placeholders in `app/config/database.custom.php` with the outputs in order:
 
    ```php
-   define('BETTERNOTEBOOK_ENCRYPTION_KEY', 'BURAYA_ILK_CIKTI');
-   define('BETTERNOTEBOOK_SETUP_TOKEN', 'BURAYA_IKINCI_CIKTI');
+   define('BETTERNOTEBOOK_ENCRYPTION_KEY', 'FIRST_OUTPUT');
+   define('BETTERNOTEBOOK_SETUP_TOKEN', 'SECOND_OUTPUT');
    ```
 
-   **Kurulum ekranına ikinci çıktıyı gir.** İlk çıktı, Gemini anahtarlarını şifrelemek için sunucuda saklanır. İki değeri de GitHub'a yükleme.
+   The **second output** is the setup code you enter in the browser. The first output stays on the server and encrypts stored Gemini keys. Keep both values out of Git.
 
-3. Yerel sunucuyu başlat.
+3. Start the local server from the repository root.
 
    ```sh
    php -S 127.0.0.1:8080 -t app dev/router.php
    ```
 
-4. [İlk kurulum ekranını](http://127.0.0.1:8080/setup.php) aç. **Kurulum kodu** alanına `BETTERNOTEBOOK_SETUP_TOKEN` değerini, diğer alanlara oluşturmak istediğin hesabın bilgilerini gir. Giriş ekranına yönlendirildikten sonra özel yapılandırmadan yalnızca `BETTERNOTEBOOK_SETUP_TOKEN` satırını kaldır. `BETTERNOTEBOOK_ENCRYPTION_KEY` satırını koru ve değerini güvenli bir yerde yedekle.
+4. Open [the setup screen](http://127.0.0.1:8080/setup.php). Enter the setup token and create your first account. After setup, remove only `BETTERNOTEBOOK_SETUP_TOKEN` from the configuration and keep a secure backup of `BETTERNOTEBOOK_ENCRYPTION_KEY`.
+5. Sign in. To use AI features, add your Gemini API key under **Settings**.
 
-AI özelliklerini kullanmak için **Ayarlar** üzerinden kendi Gemini API anahtarını gir. Anahtar veritabanında şifreli saklanır. Sunucu taşımasında şifreleme anahtarını güvenli biçimde ayrıca taşı.
+## Server installation
 
-Apache, Nginx ve cPanel üzerinde kurulum, mevcut sürümü yükseltme ve çöp kutusunun otomatik temizliği için [sunucu kurulum kılavuzuna](docs/installation.md) bak.
+Use `app/` as the document root for a dedicated domain or subdomain. The app includes Apache rewrite rules and an [Nginx/PHP-FPM example](docs/nginx.conf.example). Create the database first, make `uploads/notes/` writable by PHP, and complete initial setup over HTTPS.
 
-## Depo düzeni
+Run `php scripts/database.php upgrade` from the application directory when upgrading an existing installation. Schedule `php scripts/database.php purge-trash` hourly to remove expired items. The detailed server guide covers Apache, Nginx, cPanel, and migration. [Installation guide in Turkish](docs/installation.md)
 
-| Dizin | İçerik |
+## Repository layout
+
+| Path | Purpose |
 | --- | --- |
-| `app/` | PHP uygulaması ve çalışma dosyaları |
-| `dev/` | Yerel geliştirme sunucusunun yönlendiricisi |
-| `editor-source/` | Zengin metin editörünün kaynak kodu ve paket kilidi |
-| `site/` | Cloudflare Pages'e yüklenebilen statik tanıtım sitesi |
-| `docs/` | Kurulum, yayın talimatları ve örnek ekran görüntüleri |
+| `app/` | PHP application, runtime assets, and database schema |
+| `dev/` | Local PHP development router |
+| `editor-source/` | Rich-text editor source and dependency lockfile |
+| `site/` | Static product website |
+| `docs/` | Installation guides, branding, and screenshots |
 
-## Lisans
+## License
 
-Proje lisansı ilk kamuya açık sürümden önce belirlenecek. Dağıtılan üçüncü taraf bileşenlerinin lisans bildirimleri [app/assets/vendor](app/assets/vendor) dizininde yer alır.
+The project license will be selected before the first public release. Bundled third-party components include their [license notices](app/assets/vendor/).
