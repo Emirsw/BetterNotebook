@@ -42,11 +42,21 @@ Görüntüler örnek çalışma verileriyle çekilmiştir.
 Gereksinimler: PHP 8.1 veya üstü, MariaDB veya MySQL, `pdo_mysql`, `mbstring`, `curl`, `openssl` ve `fileinfo`. Kurulumda kullanılacak boş bir veritabanı ve o veritabanına yetkili bir kullanıcı oluştur.
 
 1. Depoyu yereline al ve `app/config/database.example.php` dosyasını aynı dizinde `database.custom.php` olarak kopyala. Veritabanı bilgilerini özel dosyaya yaz.
-2. Depo kökünde aşağıdaki komutu iki kez çalıştır. İlk çıktıyı `BETTERNOTEBOOK_ENCRYPTION_KEY`, ikinci çıktıyı `BETTERNOTEBOOK_SETUP_TOKEN` olarak özel yapılandırmaya gir.
+2. **Kurulum kodunu kendin üret.** Depo kökünde aşağıdaki iki satırı çalıştır. Her komut 64 karakterlik farklı bir değer üretir.
 
    ```sh
    php app/scripts/database.php secret
+   php app/scripts/database.php secret
    ```
+
+   `app/config/database.custom.php` içindeki boş değerleri doldur. Aşağıdaki örnek yer tutucuları terminalden aldığın çıktılarla değiştir.
+
+   ```php
+   define('BETTERNOTEBOOK_ENCRYPTION_KEY', 'BURAYA_ILK_CIKTI');
+   define('BETTERNOTEBOOK_SETUP_TOKEN', 'BURAYA_IKINCI_CIKTI');
+   ```
+
+   **Kurulum ekranına ikinci çıktıyı gir.** İlk çıktı, Gemini anahtarlarını şifrelemek için sunucuda saklanır. İki değeri de GitHub'a yükleme.
 
 3. Yerel sunucuyu başlat.
 
@@ -54,7 +64,7 @@ Gereksinimler: PHP 8.1 veya üstü, MariaDB veya MySQL, `pdo_mysql`, `mbstring`,
    php -S 127.0.0.1:8080 -t app dev/router.php
    ```
 
-4. [İlk kurulum ekranını](http://127.0.0.1:8080/setup.php) aç, kurulum kodunu gir ve ilk hesabını oluştur. İşlem tamamlanınca kurulum kodunu yapılandırmadan kaldır.
+4. [İlk kurulum ekranını](http://127.0.0.1:8080/setup.php) aç. **Kurulum kodu** alanına `BETTERNOTEBOOK_SETUP_TOKEN` değerini, diğer alanlara oluşturmak istediğin hesabın bilgilerini gir. Giriş ekranına yönlendirildikten sonra özel yapılandırmadan yalnızca `BETTERNOTEBOOK_SETUP_TOKEN` satırını kaldır. `BETTERNOTEBOOK_ENCRYPTION_KEY` satırını koru ve değerini güvenli bir yerde yedekle.
 
 AI özelliklerini kullanmak için **Ayarlar** üzerinden kendi Gemini API anahtarını gir. Anahtar veritabanında şifreli saklanır. Sunucu taşımasında şifreleme anahtarını güvenli biçimde ayrıca taşı.
 
