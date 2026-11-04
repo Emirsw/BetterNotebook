@@ -1,0 +1,68 @@
+#annotation-status{padding:8px 12px;background:#17171b;color:#b9bac4;line-height:1.6;border-bottom:1px solid #ffffff14}
+#annotation-controls{display:flex;align-items:center;gap:7px;padding:7px 10px;background:#17171b;border-bottom:1px solid #ffffff14}
+#annotation-controls>span{flex:1;font-size:12px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#annotation-controls>small{font-size:9px;color:#8c8d98}
+#annotation-controls[hidden],#annotation-status[hidden],button[hidden]{display:none!important}
+#annotation-toggle[aria-pressed=true]{background:#ffffff1b;border-color:#ffffff50}
+.pdf-annotation-layer{position:absolute;inset:0 0 auto;pointer-events:none;z-index:2;overflow:visible}
+.pdf-annotation-layer>svg{position:absolute;inset:0;overflow:visible;pointer-events:none}
+.pdf-annotation-layer svg [data-step]{pointer-events:all;cursor:pointer}
+.pdf-annotation-note{position:absolute;pointer-events:auto;padding:8px;color:#1d4ed8;line-height:1.6;overflow-wrap:anywhere;font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;box-sizing:border-box}
+.pdf-annotation-note.is-active{outline:1px dashed #2563eb35;border-radius:7px;background:#eff6ff33}
+.pdf-note-handle{display:block;width:100%;border:0;border-radius:0;background:none;padding:0 0 5px;min-height:0;font:inherit;font-size:1.05em;font-weight:600;color:inherit;text-align:left;cursor:grab;touch-action:none;text-decoration:underline;text-underline-offset:4px}
+.pdf-note-body{white-space:pre-line}
+.pdf-note-body .katex{font-size:1.06em;color:inherit;white-space:normal}
+.pdf-note-body .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden;max-width:100%}
+.pdf-note-tools{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;font:10px system-ui,sans-serif;opacity:.55}
+.pdf-annotation-note:hover .pdf-note-tools,.pdf-annotation-note:focus-within .pdf-note-tools{opacity:1}
+.pdf-note-tools button{min-width:0;min-height:22px;padding:2px 5px;color:#1d4ed8;border:1px solid #2563eb30;border-radius:6px;background:#eff6ff90;font:inherit;cursor:pointer}
+.pdf-annotation-note>small{display:block;font:10px/1.5 system-ui,sans-serif;color:#737580;margin-top:6px}
+.pdf-note-margin{box-sizing:border-box;width:100%;max-width:1120px;margin:0 auto;background:#fff;padding:28px clamp(12px,3%,36px) 36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;align-items:start;border-top:1px solid #e2e8f0}
+.pdf-note-margin-label{grid-column:1/-1;margin:0 0 2px;color:#64748b;font:12px/1.6 system-ui,sans-serif;letter-spacing:.1px}
+.pdf-note-margin .pdf-annotation-note{position:relative;inset:auto;min-width:0;max-width:100%;padding:22px 24px;border:1px solid #e2e8f0;border-radius:16px;background:#f8fafc;outline:none;box-shadow:0 2px 5px #0f172a04}
+.pdf-note-margin .pdf-annotation-note.is-active{border-color:#93b4ee;background:#f3f7ff;box-shadow:0 0 0 2px #2563eb0b}
+.pdf-note-margin .pdf-note-handle{cursor:pointer;font-size:19px;line-height:1.65;padding-bottom:14px;text-decoration:none;font-weight:600;touch-action:auto}
+.pdf-note-margin .pdf-note-body{min-width:0;font-size:18px;line-height:1.85}
+.pdf-note-margin .pdf-note-body .katex-display{margin:16px 0;max-width:100%;padding:3px 0 7px}
+.pdf-note-margin .pdf-note-tools{margin-top:22px;padding-top:14px;border-top:1px solid #dce4ef;gap:7px;font-size:11px;opacity:1}
+.pdf-note-margin .pdf-note-tools button{min-height:30px;padding:5px 9px;border-radius:8px;background:#fff;color:#526584;border-color:#dce4ef}
+.pdf-note-margin .pdf-note-tools button:hover{background:#eaf1ff;color:#1d4ed8;border-color:#afc7ed}
+.pdf-note-source{display:block;width:100%;min-width:0;padding:7px;margin:6px 0 14px;border:1px solid #dce4ef;border-radius:10px;background:#fff;color:#64748b;cursor:zoom-in;text-align:left;box-sizing:border-box}
+.pdf-note-source img{display:block;width:100%;height:120px;object-fit:contain;background:white;border-radius:5px}
+.pdf-note-source span{display:block;padding:7px 2px 0;font:10px/1.5 system-ui,sans-serif;color:#64748b}
+.pdf-note-source:hover{border-color:#93b4ee;background:#f8faff}
+.pdf-note-margin .pdf-note-source{margin:0 0 18px;padding:10px}
+.pdf-note-margin .pdf-note-source img{height:160px}
+.pdf-note-margin .pdf-note-source span{font-size:11px}
+.pdf-source-preview{box-sizing:border-box;width:min(980px,calc(100vw - 28px));max-height:92dvh;overflow:auto;border:1px solid #ffffff25;border-radius:18px;padding:22px;background:#18181d;color:#eee;font:14px/1.6 system-ui,sans-serif}
+.pdf-source-preview::backdrop{background:#0009;backdrop-filter:blur(4px)}
+.pdf-source-preview h3{margin:0 0 4px;font-size:17px}
+.pdf-source-preview p{margin:0 0 16px;color:#a1a1aa;font-size:12px}
+.pdf-source-preview>img{display:block;width:100%;max-height:65dvh;object-fit:contain;background:white;border-radius:10px}
+.pdf-source-preview>button{display:block;margin:18px 0 0 auto;padding:7px 15px;border:1px solid #ffffff25;border-radius:9px;background:#ffffff0a;color:inherit;cursor:pointer}
+.pdf-region-edit canvas{cursor:crosshair;touch-action:none}
+.pdf-region-edit .pdf-annotation-layer,.pdf-region-edit .pdf-annotation-note{pointer-events:none}
+.pdf-region-selection{position:absolute;z-index:5;border:1px solid #2563eb;background:#fde04740;pointer-events:none}
+.pdf-capture-active .pdf-annotation-note,.pdf-capture-active .pdf-annotation-layer{pointer-events:none}
+.pdf-note-editor{width:min(520px,calc(100vw - 30px));max-height:90dvh;overflow:auto;color:#eee;background:#18181d;border:1px solid #ffffff30;border-radius:20px;padding:22px;box-shadow:0 20px 80px #0008}
+.pdf-note-editor::backdrop{background:#0008;backdrop-filter:blur(4px)}
+.pdf-note-editor form{display:flex;flex-direction:column;gap:14px}
+.pdf-note-editor h3{margin:0 0 8px;font-size:18px}
+.pdf-note-editor input,.pdf-note-editor textarea{width:100%;border:1px solid #ffffff25;border-radius:10px;background:#0c0c10;color:#eee;padding:11px;text-align:left;font:13px/1.8 system-ui,sans-serif}
+.pdf-note-editor textarea{resize:vertical;min-height:130px}
+.pdf-note-editor button{cursor:pointer}
+@media(max-width:520px){#annotation-controls>small{display:none}}
+
+#annotation-status.is-loading{padding:10px 12px;background:#101012}
+.pdf-ai-loading{position:relative;display:flex;align-items:center;gap:13px;min-height:68px;padding:13px 15px;overflow:hidden;border:1px solid #ffffff1c;border-radius:14px;background:#ffffff05;box-shadow:inset 0 1px 0 #ffffff09}
+.pdf-ai-spinner{flex:0 0 27px;width:27px;height:27px;border:2px solid #ffffff1c;border-top-color:#f4f4f5;border-right-color:#ffffff70;border-radius:50%;animation:pdf-ai-spin .9s linear infinite}
+.pdf-ai-loading-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pdf-ai-loading-copy strong{color:#eeeef0;font-size:12px;font-weight:600;line-height:1.5}
+.pdf-ai-loading-copy>span{color:#92929e;font-size:11px;line-height:1.5}
+.pdf-ai-loading-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;color:#9696a1;font-size:10px;white-space:nowrap}
+.pdf-ai-elapsed{font-variant-numeric:tabular-nums;color:#d4d4dc;font-size:11px;letter-spacing:.4px}
+.pdf-ai-loading::after{content:'';position:absolute;left:0;bottom:0;width:38%;height:2px;background:linear-gradient(90deg,transparent,#ffffffb0,transparent);animation:pdf-ai-glide 1.8s ease-in-out infinite}
+@keyframes pdf-ai-spin{to{transform:rotate(360deg)}}
+@keyframes pdf-ai-glide{from{transform:translateX(-110%)}to{transform:translateX(370%)}}
+@media(max-width:440px){.pdf-ai-loading{gap:10px;padding:12px}.pdf-ai-loading-copy>span{font-size:10px}.pdf-ai-spinner{flex-basis:23px;width:23px;height:23px}.pdf-ai-loading-meta{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.pdf-ai-spinner{animation:none}.pdf-ai-loading::after{animation:none;transform:translateX(82%);opacity:.65}}

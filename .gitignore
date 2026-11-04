@@ -1,0 +1,22 @@
+# Instance configuration and private data
+.env
+.env.*
+/app/config/database.custom.php
+/app/uploads/**
+!/app/uploads/notes/
+!/app/uploads/notes/.gitkeep
+*.sql
+!/app/sql/schema.sql
+!/app/sql/migrations/*.sql
+*.zip
+*.tar.gz
+*.log
+*.bak
+*.dump
+
+# Local tools
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

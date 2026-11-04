@@ -1,0 +1,16 @@
+# BetterNotebook / existing-install overlay
+Options -Indexes -MultiViews
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Source/configuration, uploaded originals and database archives are not public.
+    RewriteRule ^(?:config|includes|sql|scripts|uploads)(?:/|$) - [F,L,NC]
+    RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
+    RewriteRule \.(?:sql|zip|bak|log|ini|yml)$ - [F,L,NC]
+    RewriteCond %{REQUEST_METHOD} =GET
+    RewriteCond %{THE_REQUEST} \s/+index\.php[?\s] [NC]
+    RewriteRule ^index\.php$ / [R=302,L,NE]
+    RewriteCond %{REQUEST_METHOD} =GET
+    RewriteCond %{THE_REQUEST} \s/+(notes|pomodoro|settings|login|logout|pdf-viewer|api/notebook)\.php[?\s] [NC]
+    RewriteRule ^(notes|pomodoro|settings|login|logout|pdf-viewer|api/notebook)\.php$ /$1 [R=302,L,NE]
+    RewriteRule ^(notes|pomodoro|settings|login|logout|pdf-viewer|api/notebook)$ $1.php [END,QSA]
+</IfModule>

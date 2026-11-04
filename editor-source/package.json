@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@tiptap/core": "^3.32.2",
+    "@tiptap/extension-image": "^3.32.2",
+    "@tiptap/extension-mathematics": "^3.32.2",
+    "@tiptap/extension-table": "^3.32.2",
+    "@tiptap/pm": "^3.32.2",
+    "@tiptap/starter-kit": "^3.32.2",
+    "acorn": "^8.15.0",
+    "dompurify": "^3.4.17",
+    "esbuild": "^0.28.2",
+    "jsdom": "^29.1.1",
+    "katex": "^0.16.22",
+    "marked": "^15.0.12",
+    "pdf-lib": "^1.17.1"
+  }
+}

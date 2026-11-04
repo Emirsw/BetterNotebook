@@ -1,0 +1,39 @@
+# Place inside your existing HTTPS server block.
+root /var/www/betternotebook/app;
+index index.php;
+
+location ~* ^/(config|includes|sql|scripts|uploads)(/|$) {
+    deny all;
+}
+
+location ~ /\.(?!well-known(?:/|$)) {
+    deny all;
+}
+
+location ~* \.(sql|zip|bak|log|ini|ya?ml)$ {
+    deny all;
+}
+
+location = /files {
+    return 301 /files/;
+}
+
+location = /api/notebook {
+    rewrite ^ /api/notebook.php last;
+}
+
+location ~ ^/(notes|pomodoro|settings|login|logout|pdf-viewer)$ {
+    rewrite ^/(.*)$ /$1.php last;
+}
+
+location / {
+    try_files $uri $uri/ =404;
+}
+
+location ~ \.php$ {
+    try_files $uri =404;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param HTTPS on;
+    fastcgi_pass unix:/run/php/php-fpm.sock;
+}
