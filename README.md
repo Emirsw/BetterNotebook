@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/PHP-8.1%2B-52586b?style=flat-square" alt="PHP 8.1 or later">
   <img src="https://img.shields.io/badge/database-MySQL%20%2F%20MariaDB-414650?style=flat-square" alt="MySQL or MariaDB">
   <img src="https://img.shields.io/badge/deployment-self--hosted-33363d?style=flat-square" alt="Deployment: Self-hosted">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--2.0--or--later-33363d?style=flat-square" alt="License: GPL-2.0-or-later"></a>
 </p>
 
 <p align="center"><strong>English</strong> · <a href="README.tr.md">Türkçe</a></p>
@@ -96,4 +97,6 @@ Run `php scripts/database.php upgrade` from the application directory when upgra
 
 ## License
 
-The project license will be selected before the first public release. Bundled third-party components include their [license notices](app/assets/vendor/).
+BetterNotebook is licensed under the [GNU General Public License, version 2](LICENSE), or (at your option) any later version published by the Free Software Foundation. The SPDX identifier is `GPL-2.0-or-later`.
+
+Bundled third-party components retain their own licenses. Their notices are available in [`app/assets/vendor/`](app/assets/vendor/).
